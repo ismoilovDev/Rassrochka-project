@@ -82,6 +82,7 @@ const ModalExample = ({ buttonLabel, productsList, index }) => {
                             <Col xs="6">
                                 <Label className="mb-2" for="product_id ">Название продукта</Label>
                                 <select className="select-product bg-dark" id="product_id" onChange={(e) => setI(e.target.value)} >
+                                    <option value=""></option>
                                     {
                                         productsList.map((item) => {
                                             return (

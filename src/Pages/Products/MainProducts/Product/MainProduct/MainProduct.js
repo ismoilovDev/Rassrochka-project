@@ -2,8 +2,7 @@ import React from 'react';
 import { Button, Card, CardBody, CardFooter, CardImg } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function MainProduct({product, deleteProduct, index, setId}) {
-
+function MainProduct({product, deleteProduct, index, click}) {
     return (
         <>
             <div className="product my-1" key={index}>
@@ -21,10 +20,8 @@ function MainProduct({product, deleteProduct, index, setId}) {
                         </div>
                     </CardBody>
                     <CardFooter className="d-flex justify-content-between">
-                        <Button onClick={() => setId(product.product_id)}>
-                            <Link className="text-white" to="/edit-product">Edit</Link>
-                        </Button>
-                        <Button className="bg-danger" onClick={() => deleteProduct(product.product_id)}>Delete</Button>{' '}
+                        <Link className="text-white edit-product" to="/edit-product" onClick={click}>Редактировать</Link>
+                        <Button className="bg-danger" onClick={() => deleteProduct(product.product_id)}>Удалить</Button>{' '}
                     </CardFooter>
                 </Card>
             </div>

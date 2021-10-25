@@ -9,6 +9,7 @@ import Clients from "./Pages/Clinets/Clients";
 import Products from './Pages/Products/Products';
 import AddProduct from './Pages/Products/AddProduct/AddProduct';
 import EditProduct from './Pages/Products/MainProducts/EditProduct/EditProduct';
+import MainProducts from './Pages/Products/MainProducts/MainProducts';
 
 
 const Home = lazy(() => import('./Pages/Home/Home'));
@@ -29,11 +30,10 @@ function Routing() {
               <Route exact path="/" render={() => <Login setToken={setToken}/>} />
             )
           }
-          <Route exact path="/user-register" component={Registration} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/add-products" component={AddProduct} />
-          <Route exact path="/edit-product" component={EditProduct} />
           <Route exact path="/clients" component={Clients} />
+          <Route exact path="/user-register" component={Registration} />
+          <Route exact path="/products" component={MainProducts} />
+          <Route exact path="/add-products" component={AddProduct} />
           <Route />
         </Switch>
       </Router>

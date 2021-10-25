@@ -32,6 +32,18 @@ li {
 img {
     width: 100%;
 }
+input[type="file"] {
+    color: white;
+    display: inline-block;
+    background: #00000026;
+    border: none;
+    padding: 7px 15px;
+    font-weight: 700;
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 10pt;
+}
 
 .main {
     width: 100% !important;
@@ -670,5 +682,28 @@ select option {
     background-color: rgba(255, 255, 255, 0.2);
 }
 .add-product:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.old-img-box {
+    height: 200px;
+}
+.old-img-box img {
+    object-fit: contain;
+    height: 200px;
+}
+.clicked-img {
+    font-size: 1.5rem;
+}
+.edit-product {
+    border: 1px solid #fff;
+    padding: 3px 10px;
+    border-radius: 5px;
+    line-height: 1.7;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    transition: .2s linear;
+}
+.edit-product:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }

@@ -13,7 +13,7 @@ function UserOrders({ordersList}) {
                     <span className="client_name font-weight-bold">товар</span>
                     <span className="client_all_sum font-weight-bold">Общий долг.</span>
                     <span className="client_paid font-weight-bold">Оплачено</span>
-                    <span className="client_count font-weight-bold">Щтука</span>
+                    <span className="client_count font-weight-bold">Месяц</span>
                 </li>
                 {
                     ordersList.map((item, index) => {

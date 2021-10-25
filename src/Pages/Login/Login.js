@@ -61,18 +61,18 @@ const Login = ({ setToken }) => {
                                     <br />
                                 </Col>
 
-                                <Col xs="6">
+                                {/* <Col xs="6">
                                     <FormGroup check>
                                         <Input type="checkbox" id="gridCheck" />{' '}
                                         <Label check for="gridCheck">
                                             Проверить меня
                                         </Label>
                                     </FormGroup>
-                                </Col>
+                                </Col> */}
 
-                                <Col xs="6" className="text-end">
+                                {/* <Col xs="6" className="text-end">
                                     <a className="text-white" href="/" > Забыли пароль ? </a>
-                                </Col>
+                                </Col> */}
 
                                 <Col xs="12" className="mt-4 w-100">
                                     <Button type="submit" className="w-100 align-items-center px-5" size="lg" block>

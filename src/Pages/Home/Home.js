@@ -44,7 +44,7 @@ function Home() {
                     <Col lg="6" className="my-1">
                         <div className="chart-box">
                             <div className="chart-subtitle mx-3">
-                                <p className="m-0">Популярные категории</p>
+                                <h5 className="mb-1 text-white">Статистика о доходе <span className="text-warning">(СКОРО...)</span></h5>
                             </div>
                             <div className="chart-title d-flex align-items-center mx-3 mb-3">
                                 <h4 className="text-white">35.652</h4>
@@ -56,7 +56,7 @@ function Home() {
                     <Col lg="6" className="my-1">
                         <div className="chart-box">
                             <div className="chart-subtitle mx-3 d-flex align-items-center justify-content-between">
-                                <h5 className="m-0 text-white">Популярные категории</h5>
+                                <h5 className="m-0 text-white">Популярные категории <span className="text-warning">(СКОРО...)</span></h5>
                                 <VscActivateBreakpoints />
                             </div>
                             <Chart2 />
@@ -68,7 +68,7 @@ function Home() {
                             </ul>
                         </div>
                     </Col>
-                    <Col lg="8" className="my-4 mx-auto">
+                    {/* <Col lg="8" className="my-4 mx-auto">
                         <div className="chart-box chart-box-3">
                             <div className="chart-subtitle mx-3 d-flex align-items-center justify-content-between">
                                 <h5 className="m-0 mb-3 text-white">Обзор</h5>
@@ -76,10 +76,10 @@ function Home() {
                             </div>
                             <Chart3 />
                         </div>
-                    </Col>
+                    </Col> */}
                 </Row>
                 <Row>
-                    <Col lg="6" className="my-1">
+                    <Col xs="5" className="my-3">
                         <Card className="radius-10 w-100">
                             <CardBody>
                                 <div className="chart-subtitle mx-3 text-white d-flex align-items-center justify-content-between">
@@ -99,14 +99,14 @@ function Home() {
                                                         <img src={user} alt="user-avatar" />
                                                         <span className="client_name">{item.client_name}</span>
                                                     </div>
-                                                    <div className="d-flex align-items-center new-client-call">
+                                                    {/* <div className="d-flex align-items-center new-client-call">
                                                         <span>
                                                             <FaEnvelope />
                                                         </span>
                                                         <span>
                                                             <FaPhoneAlt />
                                                         </span>
-                                                    </div>
+                                                    </div> */}
                                                 </li>
                                             )
                                         })
@@ -115,8 +115,7 @@ function Home() {
                             </div>
                         </Card>
                     </Col>
-                    
-                    <Col lg="6" className="my-1">
+                    <Col xs="7" className="my-3">
                         <Card className="radius-10 w-100">
                             <CardBody>
                                 <div className="chart-subtitle mx-3 text-white d-flex align-items-center justify-content-between">

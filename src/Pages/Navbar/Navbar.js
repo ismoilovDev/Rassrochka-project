@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import logo from '../../assets/images/logo-icon.png';
 import user from '../../assets/images/avatar-2.png';
@@ -7,14 +7,20 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { HiUsers } from "react-icons/hi";
 import '../../Styles/main.css';
 import Calculator from '../Calculator/Calculator';
+import http from '../../Services/getData';
 
 function Navbar() {
 
+    const inputEl = useRef("")
     const [isOpen, setIsOpen] = useState(false);
+
+    
+
 
     function toggle() {
         setIsOpen(!isOpen);
     }
+
 
     let classes = ['user-modal']
     if(isOpen) {
@@ -25,7 +31,7 @@ function Navbar() {
             <div className="main-navbars" id="main-nav">
                 <div>
                     <Container className="px-4" fluid>
-                        <Row className="w-100 for-border">
+                        <Row className="for-border">
                             <Col className="nav-logo pt-3 pb-2" xs="2">
                                 <a href="/">
                                     <img src={logo} alt="logo">
@@ -35,7 +41,11 @@ function Navbar() {
                             </Col>
                             <Col className="search-box pt-3 pb-2" xs="7">
                                 <div className="search-input">
-                                    <input type="search" placeholder="Введите для поиска..." />
+                                    <input 
+                                    ref={inputEl}
+                                        type="search" 
+                                        placeholder="Введите для поиска..."
+                                    />
                                     <span>
                                         <FaSearch />
                                     </span>

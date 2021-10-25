@@ -6,7 +6,6 @@ import Client from '../Client/Client';
 
 
 function Clients({clientsList, changeId}) {
-
     return (
         <div>
             <Navbar />
@@ -27,6 +26,7 @@ function Clients({clientsList, changeId}) {
                         </li>
                         {
                             clientsList.map((item, index) => {
+                                console.log(item)
                                 return (
                                     <Client 
                                         key={index}

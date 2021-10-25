@@ -75,7 +75,7 @@ function UserInformation({ index }) {
                                                 </div>
                                                 <div className="hr"></div>
 
-                                                <div className="mt-5">
+                                                {/* <div className="mt-5">
                                                     <Button type="submit" className="text-white mb-2" outline color="secondary">Заблокировать телефон клиента</Button>{' '}
                                                     <FormGroup check>
                                                         <Input type="checkbox" id="gridCheck" />{' '}
@@ -83,43 +83,43 @@ function UserInformation({ index }) {
                                                             Проверить меня
                                                         </Label>
                                                     </FormGroup>
-                                                </div>
+                                                </div> */}
                                             </CardBody>
                                         </Card>
                                     </Col>
                                     <Col lg="8" className="mt-2">
-                                        <Card className="pb-4">
+                                        <Card className="pb-1">
                                             <Form className="p-3 user-informations">
                                                 <FormGroup row>
                                                     <Label for="Name" sm={3}>Ф.И.О</Label>
                                                     <Col sm={9}>
-                                                        <Input type="text" id="Name" placeholder={client.first_name + " " + client.last_name + " " + client.middle_name} />
+                                                        <Input type="text" id="Name" value={client.first_name + " " + client.last_name + " " + client.middle_name} />
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup className="mt-3 align-items-center" row>
                                                     <Label for="Phone1" sm={3}>Телефон</Label>
                                                     <Col sm={9}>
-                                                        <Input type="text" id="Phone1" placeholder={client.phone1} />
+                                                        <Input type="text" id="Phone1" value={client.phone1} />
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup className="mt-3 align-items-center" row>
                                                     <Label for="Phone2" sm={3}>Телефон 2</Label>
                                                     <Col sm={9}>
-                                                        <Input type="text" id="Phone2" placeholder={client.phone2} />
+                                                        <Input type="text" id="Phone2" value={client.phone2} />
                                                     </Col>
                                                 </FormGroup>
                                                 <FormGroup className="mt-3 align-items-center" row>
                                                     <Label for="PasportSeria" sm={3}>{client.pasport_serial}</Label>
                                                     <Col sm={9}>
-                                                        <Input type="text" id="PasportSeria" placeholder={client.pasport_number} />
+                                                        <Input type="text" id="PasportSeria" value={client.pasport_number} />
                                                     </Col>
                                                 </FormGroup>
-                                                <div className="mt-4 d-flex">
+                                                {/* <div className="mt-4 d-flex">
                                                     <Col sm={3}></Col>
                                                     <Col sm={9}>
                                                         <Button type="submit" className="text-white mb-2 mx-1" outline color="secondary">Сохранить данные</Button>{' '}
                                                     </Col>
-                                                </div>
+                                                </div> */}
                                             </Form>
                                         </Card>
                                     </Col>

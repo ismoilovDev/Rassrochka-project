@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom'
 import { Col, Container, Row } from 'reactstrap'
 import MainProduct from './MainProduct/MainProduct'
 import { FaPlusSquare } from "react-icons/fa";
-
+import Navbar from '../../../Navbar/Navbar';
 
 function Product({productsList, deleteProduct, editProduct, setId}) {
+    
+    const getIdHendler = (clickedId) => {
+        setId(clickedId)
+        console.log(clickedId);
+    } 
+    
     return (
         <div>
+            <Navbar />
             <Container className="my-4">
                 <Link className="text-white add-product" to="/add-products">
                     AddProduct
@@ -23,7 +30,7 @@ function Product({productsList, deleteProduct, editProduct, setId}) {
                                         product={product}
                                         deleteProduct={deleteProduct}
                                         editProduct={editProduct}
-                                        setId={setId}
+                                        click={() => getIdHendler(product.product_id)}
                                     />
                                 </Col>
                             )

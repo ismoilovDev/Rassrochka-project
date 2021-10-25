@@ -69,6 +69,7 @@ function Registration() {
                     const allPosts = [...clients, res.data.payload];
                     setClients(allPosts);
                     history.push('/clients');
+                    console.log(res.data.payload);
                 })
                 .catch((err) => console.log(err))
 
@@ -77,7 +78,7 @@ function Registration() {
         }
     }
     return (
-        <div className="main">
+        <div className="main py-3">
             <Col xl="7" className="mx-auto">
                 <Card>
                     <CardBody className="p-5 register-title">
@@ -165,18 +166,17 @@ function Registration() {
                                 </Col>
 
                                 <div className="mt-3">
-                                    <Label className="mb-2" for="PasportSeria">Сканер пасспорта</Label>
+                                    <Label className="mb-2" for="PasportSeria">Сканер паспорта</Label>
                                     <Card>
                                         <CardBody>
                                             <div className="image-uploadify">
                                                 <div className="image-uploadify-plase">
                                                     <IoMdCloudUpload />
-                                                    <Input className="text-white" onChange={(e) => setImg1(e.target.files[0])} type="file" id="product_img1" placeholder="product img" />
-                                                    <Input className="text-white" onChange={(e) => setImg2(e.target.files[0])} type="file" id="product_img2" placeholder="product img" />
-                                                    {/* <span>
-                                                        Перетащите файлы сюда, чтобы загрузить
-                                                    </span>
-                                                        <Input type="file" name="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" multiple /> */}
+                                                    <Label className="mb-2 justify-content-start" for="pasport">Паспорт</Label>                                
+                                                    <Input className="text-white mb-4" onChange={(e) => setImg1(e.target.files[0])} type="file" id="pasport" />
+                                                    <Label className="mb-2" for="latter">Соглашение</Label>
+                                                    <Input className="text-white mb-" onChange={(e) => setImg2(e.target.files[0])} type="file" id="latter" />
+                                                    
                                                 </div>                                                
                                             </div>
                                         </CardBody>
@@ -195,12 +195,6 @@ function Registration() {
                 </Card>
             </Col>
 
-            <Col xs="12" className="text-center mt-5">
-                <p className="footer text-white">
-                    Copyright © 2021. Все права защищены. Основатель сайта 
-                    <a className="text-white" rel="nofollow" href="https://texnopos.uz/" > TexnoPOS</a>
-                </p>
-            </Col>
         </div>
     )
 }

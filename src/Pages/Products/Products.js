@@ -1,16 +1,16 @@
-import React from 'react';
+// import React from 'react';
 
-import MainProducts from './MainProducts/MainProducts';
-import Navbar from '../Navbar/Navbar';
+// import MainProducts from './MainProducts/MainProducts';
+// import Navbar from '../Navbar/Navbar';
 
-function Products() {
+// function Products() {
 
-    return (
-        <div>
-            <Navbar />
-            <MainProducts />            
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             <Navbar />
+//             <MainProducts />            
+//         </div>
+//     )
+// }
 
-export default Products;
+// export default Products;

@@ -51,10 +51,10 @@ function Calculator() {
                     <p className="d-flex text-white">
                         <span className="mx-2">Cумма : </span>
                         {result} 
-                        <span className="mx-1">sum</span>
+                        <span className="mx-1">сум</span>
                     </p>
                     <div>
-                        <Button type="button" onClick={calc}>Кальк</Button>{' '}
+                        <Button type="button" onClick={calc}>OK</Button>{' '}
                         <Button onClick={toggle}>Отмена</Button>
                     </div>
                 </ModalFooter>
