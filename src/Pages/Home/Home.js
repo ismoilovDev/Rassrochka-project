@@ -6,13 +6,32 @@ import user from '../../assets/images/avatar-2.png';
 import Navbar from '../Navbar/Navbar';
 import Chart1 from './Charts/Chart1';
 import Chart2 from './Charts/Chart2';
-import Chart3 from './Charts/Chart3';
+// import Chart3 from './Charts/Chart3';
 import http from '../../Services/getData';
 import '../../Styles/main.css';
-import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 
 function Home() {
-    const [clients, setClients] = useState([]);
+    const [clients, setClients] = useState([]);   
+    const [searchTerm, setSearchTerm] = useState('');
+    const [result, setResult] = useState([])
+
+
+    const searchHendler = () => {
+        http.get(`/cilent_search?search=${searchTerm}`)
+            .then((res) => {
+                setResult(res.data.payload)
+                console.log(res.data.payload);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        searchHendler()
+        // eslint-disable-next-line
+    }, [searchTerm])
+
 
     useEffect(() => {
         http.get('/cilents')
@@ -38,7 +57,10 @@ function Home() {
 
     return (
         <>
-            <Navbar />
+            <Navbar 
+                setSearchTerm={setSearchTerm}
+                searchTerm = {searchTerm}
+            />
             <Container className="my-5">
                 <Row>
                     <Col lg="6" className="my-1">
@@ -68,18 +90,21 @@ function Home() {
                             </ul>
                         </div>
                     </Col>
-                    {/* <Col lg="8" className="my-4 mx-auto">
-                        <div className="chart-box chart-box-3">
-                            <div className="chart-subtitle mx-3 d-flex align-items-center justify-content-between">
-                                <h5 className="m-0 mb-3 text-white">Обзор</h5>
-                                <VscActivateBreakpoints />
+
+                    {/* 
+                        <Col lg="8" className="my-4 mx-auto">
+                            <div className="chart-box chart-box-3">
+                                <div className="chart-subtitle mx-3 d-flex align-items-center justify-content-between">
+                                    <h5 className="m-0 mb-3 text-white">Обзор</h5>
+                                    <VscActivateBreakpoints />
+                                </div>
+                                <Chart3 />
                             </div>
-                            <Chart3 />
-                        </div>
-                    </Col> */}
+                        </Col> 
+                    */}
                 </Row>
                 <Row>
-                    <Col xs="5" className="my-3">
+                    <Col xs="7" className="my-3">
                         <Card className="radius-10 w-100">
                             <CardBody>
                                 <div className="chart-subtitle mx-3 text-white d-flex align-items-center justify-content-between">
@@ -92,21 +117,13 @@ function Home() {
                             <div className="new-clients-card">
                                 <ul className="new-clients-box">
                                     {
-                                        clients.map((item) => {
+                                        (searchTerm === "" ? clients : result).map((item) => {
                                             return (
                                                 <li className="new-clients d-flex align-items-center text-white justify-content-between" key={item.client_id}>
                                                     <div>
                                                         <img src={user} alt="user-avatar" />
                                                         <span className="client_name">{item.client_name}</span>
-                                                    </div>
-                                                    {/* <div className="d-flex align-items-center new-client-call">
-                                                        <span>
-                                                            <FaEnvelope />
-                                                        </span>
-                                                        <span>
-                                                            <FaPhoneAlt />
-                                                        </span>
-                                                    </div> */}
+                                                    </div>                                                    
                                                 </li>
                                             )
                                         })
@@ -115,7 +132,7 @@ function Home() {
                             </div>
                         </Card>
                     </Col>
-                    <Col xs="7" className="my-3">
+                    <Col xs="5" className="my-3">
                         <Card className="radius-10 w-100">
                             <CardBody>
                                 <div className="chart-subtitle mx-3 text-white d-flex align-items-center justify-content-between">

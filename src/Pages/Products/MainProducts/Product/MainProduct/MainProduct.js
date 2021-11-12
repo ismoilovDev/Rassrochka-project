@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Card, CardBody, CardFooter, CardImg } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import EditProduct from '../../EditProduct/EditProduct';
 
-function MainProduct({product, deleteProduct, index, click}) {
+function MainProduct({product, deleteProduct, index, }) {
     return (
         <>
             <div className="product my-1" key={index}>
@@ -11,7 +11,7 @@ function MainProduct({product, deleteProduct, index, click}) {
                     <CardBody className="p-1 px-2 m-0">
                         <div className="product-title d-flex align-items-center justify-content-between text-white">
                             <div>
-                                <h6 className="mb-0">{product.product_name}</h6>
+                                <h5 className="mb-0">{product.product_name}</h5>
                                 <p>{product.category_name}</p>
                             </div>
                             <div>
@@ -19,9 +19,12 @@ function MainProduct({product, deleteProduct, index, click}) {
                             </div>
                         </div>
                     </CardBody>
-                    <CardFooter className="d-flex justify-content-between">
-                        <Link className="text-white edit-product" to="/edit-product" onClick={click}>Редактировать</Link>
-                        <Button className="bg-danger" onClick={() => deleteProduct(product.product_id)}>Удалить</Button>{' '}
+                    <CardFooter className="d-flex justify-content-between align-items-center">
+                        {/* <Link className="text-white edit-product btn btn-success bg-success" to="/edit-product" onClick={click}>Редактировать</Link> */}                        
+                        <EditProduct
+                            index={product.product_id}
+                        />
+                        <Button size="md" className="btn btn-danger bg-danger h-25" onClick={() => deleteProduct(product.product_id)}>Удалить</Button>{' '}
                     </CardFooter>
                 </Card>
             </div>

@@ -226,13 +226,32 @@ input#gridCheck {
 /* Navbar */
 
 .main-navbars {
-    position: fixed !important;
+    position: relative;
+    min-width: 250px;
     width: 100% !important;
     top: 0 !important;
     left: 0 !important;
     z-index: 150;
-    background-color: rgba(0, 0, 0, 0.24) !important;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.12) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
 }
+.main-navbars#main-nav {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.12) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    z-index: 500;
+}
+/* .main-navbars.active {
+    position: fixed !important;
+    width: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1000;
+    background-color: rgb(12, 12, 12) !important;
+} */
 .for-border {
     border-bottom: 1px solid rgba(255, 255, 255, 0.342);
     position: relative;
@@ -327,7 +346,6 @@ input#gridCheck {
 }
 
 .user-profile {
-    width: 100%;
     position: relative;
 }
 .user-profile-box {
@@ -339,7 +357,6 @@ input#gridCheck {
 .user-profile-box img {
     width: 42px;
     height: 42px;
-    margin-right: 20px;
 }
 .user-names {
     line-height: 1.2;
@@ -429,7 +446,9 @@ input#gridCheck {
     margin-right: 10px;
     font-size: 1.5rem;
 }
-
+.calc-svg {
+    font-size: 1.5rem;
+}
 /* ------------ */
 .calculator {
     position: relative;
@@ -706,4 +725,125 @@ select option {
 }
 .edit-product:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+.messege-alert-box {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 2500;
+    display: none;
+    transform-origin: left;
+    transition: .3s linear;
+    animation: alerAnime12 .3s linear;
+    transform-origin: left;
+    transition: .3s linear;
+}
+@keyframes alerAnime2 {
+    from {
+        opacity: 1;
+        transform: translate(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+.messege-alert-box.active {
+    display: flex;
+    animation: alerAnime1 .3s linear;
+    transform-origin: left;
+    transition: .3s linear;
+    z-index: 2500;
+}
+@keyframes alerAnime1 {
+    from {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.messege-alert {
+    width: 70% !important;
+    z-index: 2000;
+}
+.category-ul {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.342);
+    padding: 5px 22px 9px 22px;
+}
+.category-ul li {
+    margin: 10px 0;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.edit-category {
+    display: none;
+}
+.edit-category.active {
+    display: block;
+}
+.category-ul {
+    overflow-y: scroll;
+    height: 300px !important;
+}
+.user-informa .main-navbars {
+    display: none !important;
+    visibility: hidden !important;
+}
+.accordion-header {
+    border-radius: 5px;
+}
+.accordion-header button {
+    background-color: #343a40 !important; 
+    color: #fff !important;
+}
+.accordion-header button::after {
+    color: #fff !important;
+}
+.accordion-button:focus {
+    box-shadow: 0px 0px 0 3px rgba(255, 255, 255, 0.884) !important;
+}
+.phone {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: .5px solid #eeececd8;
+    padding: 5px 0;
+    border-radius: 3px;
+    background-color: #00000026;
+    margin: 8px 5px;
+    opacity: 1;
+    animation: phoneAnime .4s linear;
+}
+
+@keyframes phoneAnime {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.phone span {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.555);
+    margin-bottom: 3px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.phone p {
+    margin: 0;
+    padding: 0;
+    margin-top: 3px;
+    font-size: 14px;
+    letter-spacing: 1px;
 }

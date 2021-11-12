@@ -3,7 +3,7 @@ import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 
 const data = [
     { name: 'Телефон', value: 550 },
-    { name: 'Бытовая техника ', value: 390 },
+    { name: 'Техника ', value: 390 },
     { name: 'Furniture ', value: 300 },
     { name: 'Men', value: 200 },
 ];
@@ -79,7 +79,7 @@ export default class Example extends PureComponent {
                         cy="50%"
                         innerRadius={60}
                         outerRadius={80}
-                        fill="#ffffff60"
+                        fill="#fff"
                         dataKey="value"
                         onMouseEnter={this.onPieEnter}
                     />

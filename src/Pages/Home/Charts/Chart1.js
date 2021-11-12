@@ -99,7 +99,7 @@ export default class Example extends PureComponent {
                     <Tooltip />
                     <Legend />
                     <CartesianGrid strokeDasharray="0 3" />
-                    <Bar dataKey="pv" fill="#ffffff60" background={{ fill: 'transparent' }} />
+                    <Bar dataKey="pv" fill="#fff" background={{ fill: 'transparent' }} />
                 </BarChart>
             </ResponsiveContainer>
         );

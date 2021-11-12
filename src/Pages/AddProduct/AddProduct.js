@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../../../assets/images/logo-icon.png';
-import http from '../../../Services/getData';
+import logo from '../../assets/images/logo-icon.png';
+import http from '../../Services/getData';
 import { AiFillFolderAdd } from "react-icons/ai";
-import { FaUserPlus } from 'react-icons/fa';
-import { Col, Card, CardBody, CardTitle, Form, Row, Label, InputGroup, Input, Button } from 'reactstrap';
+import { MdAddShoppingCart } from "react-icons/md";
+import { Col, Card, CardBody, CardTitle, Form, Row, Label, InputGroup, Input, Button, Alert } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
+import { Link } from '@material-ui/core';
 
 
 const AddProduct = () => {
@@ -13,9 +14,7 @@ const AddProduct = () => {
     const [option, setOption] = useState([]);
     const [img, setImg] = useState('');
     const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [ind, setInd] = useState("4");
-    const [surcharge, setSurcharge] = useState('');
+    const [ind, setInd] = useState('');
     const history = useHistory();
 
     useEffect(() => {
@@ -36,15 +35,32 @@ const AddProduct = () => {
         fetchPosts();
     }, [])
 
-    
+    // Alert Messege ---->
+    let [classes, setClasses] = useState('messege-alert-box')
+    const showAlert = () => {
+        if(classes === 'messege-alert-box'){
+            setClasses('messege-alert-box active')
+        }else {
+            setClasses('messege-alert-box')
+        }
+    }
+
+    // Alert Messege ---->
+    let [classesAdd, setClassesAdd] = useState('messege-alert-box')
+    const showAddAlert = () => {
+        if(classesAdd === 'messege-alert-box'){
+            setClassesAdd('messege-alert-box active')
+        }else {
+            setClassesAdd('messege-alert-box')
+        }
+    }
+
     // Post {Add} Product
     const addProducts = async (e) => {
         if(
             img &&
             ind &&
-            name &&
-            price &&
-            surcharge
+            name
         ){
             e.preventDefault();
             console.log(img);
@@ -52,21 +68,25 @@ const AddProduct = () => {
             formdata.append('product_img', img, img.name);
             formdata.append('category_id', ind);
             formdata.append('name', name);
-            formdata.append('price', price);
-            formdata.append('surcharge', surcharge);
             console.log(formdata);
             await http.post('/product/add', formdata)
                 .then((res) => {
-                    const allPosts = [...products, res.data.payload];
-                    setProducts(allPosts);
-                    setName('');
-                    setPrice('');
-                    setSurcharge('');
-                    history.push('/products');
+                    console.log(res.data.payload);
+                    if (res.data.payload.length === 0) {
+                        showAlert()
+                    } else if(res.data.payload.length !== 0) {
+                        showAddAlert()
+                        const allPosts = [...products, res.data.payload];
+                        setProducts(allPosts);
+                        setName('');
+                        history.push('/products');
+                        // window.location.reload(false);
+                    }
                 })
                 .catch((err) => console.log(err))
+                showAlert()
         }else {
-            alert("Categoryani O'zgartiring")
+            alert("Forma to'liq to'ldirilmadi")
         }
     }
 
@@ -84,22 +104,33 @@ const AddProduct = () => {
         getOption()
         // eslint-disable-next-line
     }, [])
+    
     return (
-        <div className="main">
+        <div className="main mt-3">
+            <div className={classes}>
+                <Alert className="messege-alert" color="warning">
+                    Название продукта было введено ранее
+                </Alert>
+            </div>
+            <div className={classesAdd}>
+                <Alert className="messege-alert" color="warning">
+                    Подождите пожалуйста! Товар добавляется
+                </Alert>
+            </div>
             <Col xl="7" className="mx-auto">
                 <Card>
                     <CardBody className="p-5 register-title">
                         <CardTitle className="d-flex align-items-center justify-content-between text-white">
                             <div>
-                                <FaUserPlus />
+                                <MdAddShoppingCart />
                                 <h5>Добавить товар</h5>
                             </div>
                             <div className="nav-logo nav-logo-1">
-                                <a href="/">
+                                <Link href="/">
                                     <img src={logo} alt="logo">
                                     </img>
                                     <h4>Рассрочка</h4>
-                                </a>
+                                </Link>
                             </div>
                         </CardTitle>
                         <div className="hr"></div>
@@ -121,25 +152,10 @@ const AddProduct = () => {
                                     <br />
                                 </Col>
 
-                                <Col xs="6">
-                                    <Label className="mb-2" for="product_price">Цена</Label>
-                                    <InputGroup size="md">
-                                        <Input className="text-white" onChange={(e) => setPrice(e.target.value)} type="text" id="product_price" placeholder="Цена" />
-                                    </InputGroup>
-                                    <br />
-                                </Col>
 
                                 <Col xs="6">
-                                    <Label className="mb-2" for="product_surcharge">Доплата</Label>
-                                    <InputGroup size="md">
-                                        <Input className="text-white" onChange={(e) => setSurcharge(e.target.value)} type="text" id="product_surcharge" placeholder="Доплата" />
-                                    </InputGroup>
-                                    <br />
-                                </Col>
-
-                                <Col xs="6">
-                                    <Label className="mb-2" for="category_id">Категории ид</Label>
-                                    <select className="mx-2 bg-dark" id="category_id" onChange={(e) => setInd(e.target.value)} >
+                                    <Label className="mb-2" for="category_id">Выбрать категорию !</Label>
+                                    <select className="mx-2 bg-dark form-select text-white" id="category_id" onChange={(e) => setInd(e.target.value)} >
                                         <option value=""></option>
                                         {
                                             option.map((item) => {
@@ -152,8 +168,8 @@ const AddProduct = () => {
                                     <br />
                                 </Col>
 
-                                <Col xs="12" className="mt-4 w-100">
-                                    <Button type="submit" className=" align-items-center px-5" size="md">
+                                <Col xs="6" className="d-flex justify-content-end align-items-center">
+                                    <Button type="submit" className="py-2" size="md">
                                         <AiFillFolderAdd />Добавить
                                     </Button>
                                 </Col>

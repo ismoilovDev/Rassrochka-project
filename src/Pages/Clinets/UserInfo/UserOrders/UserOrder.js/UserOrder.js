@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import OrderPay from '../OrderPay/OrderPay'
 
 const UserOrder = ({order, ind}) => {
-    useEffect(() => {
-        console.log(order);
-    }, [])
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         <div>
             <li className="clients_table_item text-white" key={ind}>
@@ -12,8 +17,12 @@ const UserOrder = ({order, ind}) => {
                 <span className="client_all_sum">{order.product_price}</span>
                 <span className="client_paid">{order.paid_sum}</span>
                 <span className="client_count">{order.order_month}</span>
-            </li>
+            </li>  
+            <OrderPay
+
+            />
         </div>
+        
     )
 }
 

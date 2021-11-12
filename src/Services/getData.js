@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: "http://back-end.i-plan.uz/api",
+    baseURL: "https://shop1.i-plan.uz/api",
     headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
     }

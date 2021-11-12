@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input } from 'reactstrap';
+import { AiFillCalculator } from "react-icons/ai";
 
 function Calculator() {
 
@@ -10,10 +11,19 @@ function Calculator() {
     const [result, setResult] =useState(0)
 
     const calc = () => {
-        const adding = (month * protsent) / 100;
-        const astat = sum - paid;
-        const constant = astat * (1 + adding);        
-        setResult(constant / month);
+        if(protsent >= 0 && month >= 0 && paid >= 0 && sum >= 0 && paid < sum){
+            const adding = (month * protsent) / 100;
+            const astat = sum - paid;
+            const constant = astat * (1 + adding);    
+            const calc = constant / month    
+            setResult(calc.toFixed(2));
+        }else{
+            alert('Не были введены правильные числа !!!')
+        }
+        // setSum(0);
+        // setPaid(0);
+        // setProtsent(0);
+        // setMonth(0);
     }
 
     const [modal, setModal] = useState(false);
@@ -26,7 +36,9 @@ function Calculator() {
     const externalCloseBtn = <button className="close" style={{ position: 'relative', top: '15px', right: '15px' }} onClick={toggle}>&times;</button>;
     return (
         <div className="calculator">
-            <Button color="danger" onClick={toggle} className="openModal">Калькулятор</Button>
+            <Button color="danger" onClick={toggle} className="openModal nav-links">
+                <AiFillCalculator className="calc-svg" />
+                Калькулятор</Button>
             <Modal isOpen={modal} toggle={toggle} className="modal-bg" external={externalCloseBtn}>
                 <ModalHeader className="text-white">Калькулятор</ModalHeader>
                 <ModalBody>
