@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom';
 function MainProducts() {
 
 
+   const [clients, setClients] = useState([]);
    const [products, setProducts] = useState([]);
    const [searchTerm, setSearchTerm] = useState('');
    const [result, setResult] = useState([]);
@@ -33,20 +34,27 @@ function MainProducts() {
       []);
 
 
-   const searchHendler = () => {
-      http.get(`/cilent_search?search=${searchTerm}`)
-         .then((res) => {
-            setResult(res.data.payload)
-         })
-         .catch((err) => {
-            console.log(err);
-         })
-   }
-
+   // SEARCH Hendler ->
    useEffect(() => {
-      searchHendler()
-      // eslint-disable-next-line
-   }, [searchTerm])
+      const filteredResults = clients.filter((client) =>
+         (client.client_name !== undefined ? (client.client_name).toLowerCase() : "").includes(searchTerm.toLowerCase())
+         || (client.phone1 !== undefined ? (client.phone1).toLowerCase() : "").includes(searchTerm.toLowerCase())
+         || (client.phone2 !== undefined ? (client.phone2).toLowerCase() : "").includes(searchTerm.toLowerCase()));
+
+         setResult(filteredResults.reverse());
+   }, [clients, searchTerm])
+
+
+   // GET Clients ->
+   useEffect(() => {
+      http.get('/cilents')
+         .then((res) => {
+            setClients(res.data.payload)
+         })
+         .catch(err => console.log(err))
+   }, // eslint-disable-next-line
+      [])
+
 
    // Delete Product-------------->
    const deleteProduct = async (id) => {

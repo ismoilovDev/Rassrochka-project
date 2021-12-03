@@ -20,7 +20,6 @@ function Category() {
     const addCategories = async (e) => {
         e.preventDefault()
         const data = { name }
-        http.post('/category/add', data);
         try {
             const response = await http.post('/category/add', data);
             const allCategories = [...categories, response.data.payload];
@@ -64,7 +63,6 @@ function Category() {
             const response = await http.patch(`/category/edit/${ind}`, { name: editName });
             setCotegories(categories.map(post => post.id === ind ? { ...response.data } : post));
             setOldName('');
-            showAlert()
         } catch (err) {
             console.log(`Error: ${err.message}`);
         }
@@ -111,7 +109,8 @@ function Category() {
             </div>
             <Button color="danger" onClick={toggle} className="openModal nav-links">
                 <AiOutlineAppstoreAdd className="calc-svg" />
-                Категория</Button>
+                Категория
+            </Button>
             <Modal isOpen={modal} toggle={toggle} fullscreen="lg" size="lg" className="modal-bg" external={externalCloseBtn}>
                 <ModalHeader className="text-white">Категория</ModalHeader>
                 <ModalBody>

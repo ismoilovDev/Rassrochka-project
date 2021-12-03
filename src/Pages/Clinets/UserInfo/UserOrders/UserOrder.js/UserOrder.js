@@ -1,13 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import OrderPay from '../OrderPay/OrderPay'
+import React  from 'react';
+
+
 
 const UserOrder = ({order, ind}) => {
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
         <div>
@@ -18,9 +13,6 @@ const UserOrder = ({order, ind}) => {
                 <span className="client_paid">{order.paid_sum}</span>
                 <span className="client_count">{order.order_month}</span>
             </li>  
-            <OrderPay
-
-            />
         </div>
         
     )

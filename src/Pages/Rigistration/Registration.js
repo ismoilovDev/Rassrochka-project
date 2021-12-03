@@ -11,8 +11,8 @@ import { useHistory } from 'react-router-dom';
 function Registration() {
 
     const [clients, setClients] = useState([])
-    const [img1, setImg1] = useState(null);
-    const [img2, setImg2] = useState(null);
+    const [img1, setImg1] = useState();
+    const [img2, setImg2] = useState();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [middleName, setMiddleName] = useState("");
@@ -86,8 +86,10 @@ function Registration() {
             formdata.append('phone10', phone10);
             formdata.append('pasport_serial', pasportSer);
             formdata.append('pasport_number', pasportNumber);
-            formdata.append('pasport_photo', img1);
-            formdata.append('latter', img2);
+            if(img1 && img2){
+                formdata.append('pasport_photo', img1);
+                formdata.append('latter', img2);
+            }
 
             http.post('/client/registration', formdata)
                 .then(res => {

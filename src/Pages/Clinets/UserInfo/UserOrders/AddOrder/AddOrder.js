@@ -46,13 +46,11 @@ const ModalExample = ({ buttonLabel, productsList, index }) => {
                 .then((res) => {
                     const allPosts = [...orders, res.data.payload];
                     setOrders(allPosts);
-                    history.push('/clients');
                     window.location.reload(false);
                 })
                 .catch((err) => console.log(err))
         } else {
             alert('Пожалуйста, заполните форму полностью')
-            history.push('/clients')
         }
     }
 

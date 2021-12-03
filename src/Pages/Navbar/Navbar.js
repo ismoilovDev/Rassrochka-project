@@ -9,11 +9,16 @@ import '../../Styles/main.css';
 import Calculator from '../Calculator/Calculator';
 import Category from '../Categories/Category';
 import { Link } from 'react-router-dom';
+import OrderPay from '../OrderPay/OrderPay';
 
 function Navbar({ searchTerm, setSearchTerm }) {
 
    const [isOpen, setIsOpen] = useState(false);
 
+   const [show, setShow] = useState(false);
+
+   const handleCloseHendler = () => setShow(false);
+   const handleOpen = () => setShow(true)
 
    function toggle() {
       setIsOpen(!isOpen);
@@ -81,7 +86,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
                      <Col>
                         <Link className="nav-links" to="products">
                            <FaShoppingCart />
-                           <span>Товары</span>
+                           <span>Продукты</span>
                         </Link>
                      </Col>
                      <Col>
@@ -101,6 +106,13 @@ function Navbar({ searchTerm, setSearchTerm }) {
                            <FaUserPlus />
                            <span>Добавить клиента</span>
                         </Link>
+                     </Col>
+                     <Col>
+                        <OrderPay
+                           show={show}
+                           hendleShow={handleOpen}
+                           handleClose={handleCloseHendler}
+                        />
                      </Col>
                      <Col>
                         <Category />

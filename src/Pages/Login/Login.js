@@ -18,6 +18,7 @@ const Login = ({ setToken }) => {
             .then((res) => {
                 setToken(res.data.payload.token);
                 window.localStorage.setItem('token', res.data.payload.token)
+                window.location.reload(false);                
             })
             .catch(() => { setHasError(true) })
     }

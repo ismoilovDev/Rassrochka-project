@@ -16,21 +16,6 @@ function Home() {
     const [result, setResult] = useState([])
 
 
-    const searchHendler = () => {
-        http.get(`/cilent_search?search=${searchTerm}`)
-            .then((res) => {
-                setResult(res.data.payload)
-                console.log(res.data.payload);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
-    useEffect(() => {
-        searchHendler()
-        // eslint-disable-next-line
-    }, [searchTerm])
 
 
     useEffect(() => {
@@ -55,6 +40,17 @@ function Home() {
     []);
 
 
+    // SEARCH Hendler ->
+    useEffect(() => {
+        const filteredResults = clients.filter((client) =>
+        (client.client_name !== undefined ? (client.client_name).toLowerCase() : "").includes(searchTerm.toLowerCase())
+        || (client.phone1 !== undefined ? (client.phone1).toLowerCase() : "").includes(searchTerm.toLowerCase())
+        || (client.phone2 !== undefined ? (client.phone2).toLowerCase() : "").includes(searchTerm.toLowerCase()));
+
+        setResult(filteredResults.reverse());
+    }, [clients, searchTerm])
+
+    
     return (
         <>
             <Navbar 
@@ -104,7 +100,7 @@ function Home() {
                     */}
                 </Row>
                 <Row>
-                    <Col xs="7" className="my-3">
+                    <Col lg="7" className="my-3">
                         <Card className="radius-10 w-100">
                             <CardBody>
                                 <div className="chart-subtitle mx-3 text-white d-flex align-items-center justify-content-between">
@@ -132,7 +128,7 @@ function Home() {
                             </div>
                         </Card>
                     </Col>
-                    <Col xs="5" className="my-3">
+                    <Col lg="5" className="my-3">
                         <Card className="radius-10 w-100">
                             <CardBody>
                                 <div className="chart-subtitle mx-3 text-white d-flex align-items-center justify-content-between">

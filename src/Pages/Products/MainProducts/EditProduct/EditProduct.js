@@ -106,7 +106,8 @@ const EditProduct = ({ index }) => {
             </div>
             <Button color="danger" onClick={toggle} className="openModal nav-links">
                <FaEdit className="calc-svg" />
-               Категория</Button>
+               Редактировать
+            </Button>
             <Modal isOpen={modal} toggle={toggle} fullscreen="lg" size="lg" className="modal-bg" external={externalCloseBtn}>
                <ModalHeader className="text-white">Редактировать продукт</ModalHeader>
                <ModalBody className="p-0">
